@@ -1,0 +1,43 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform vec4 color0 : hint_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 color1 : hint_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 color2 : hint_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 color3 : hint_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 color4 : hint_color = vec4(0.0, 0.0, 0.0, 1.0);
+
+uniform bool useAlphaChannel = false;
+
+void fragment() {
+	float value;
+	if (useAlphaChannel) {
+		value = texture(TEXTURE, UV).a;
+	} else {
+		value = texture(TEXTURE, UV).r;
+	}
+	if (value < 0.25) {
+		COLOR = mix(color0, color1, value * 0.25);
+	} else if (value < 0.5) {
+		COLOR = mix(color1, color2, (value - 0.25) * 0.25);
+	} else if (value < 0.75) {
+		COLOR = mix(color2, color3, (value - 0.5) * 0.25);
+	} else if (value < 1.0) {
+		COLOR = mix(color3, color4, (value - 0.75) * 0.25);
+	} else {
+		COLOR = color4;
+	}
+	
+	COLOR.a = texture(TEXTURE, UV).a;
+}"
+
+[resource]
+shader = SubResource( 5 )
+shader_param/color0 = Color( 0.458824, 0.309804, 0.266667, 1 )
+shader_param/color1 = Color( 0.92549, 0.45098, 0.341176, 1 )
+shader_param/color2 = Color( 0.992157, 0.839216, 0.572549, 1 )
+shader_param/color3 = Color( 0.984314, 1, 0.72549, 1 )
+shader_param/color4 = Color( 1, 1, 1, 1 )
+shader_param/useAlphaChannel = false
