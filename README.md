@@ -1,4 +1,5 @@
-# Lenia
+![Lenia Icon](Icon.png)![Lenia Icon](LogoText.png)
+
 A cellular automata made in Godot 3.5's shaders.
 
 ## What is it?
