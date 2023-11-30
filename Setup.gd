@@ -22,6 +22,11 @@ func _process(delta: float) -> void:
 	$CanvasModulate.color.g = modulateColor
 	$CanvasModulate.color.b = modulateColor
 
+	if Input.is_action_just_pressed("pause"):
+		var image = get_viewport().get_texture().get_data()
+		image.flip_y()
+		image.save_png("res://Logo.png")
+
 func loadPalette() -> void:
 	if Global.palette == 0:
 		$Main/Title.material = load("res://palettes/Palette0Title.tres")

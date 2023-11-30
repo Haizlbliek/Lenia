@@ -53,7 +53,6 @@ margin_bottom = 1024.0
 color = Color( 0.12549, 0.141176, 0.192157, 1 )
 
 [node name="Main" type="VBoxContainer" parent="."]
-visible = false
 margin_left = 256.0
 margin_right = 512.0
 margin_bottom = 512.0
@@ -136,6 +135,7 @@ margin_bottom = 398.0
 rect_min_size = Vector2( 0, 10 )
 
 [node name="Settings" type="VBoxContainer" parent="."]
+visible = false
 margin_left = 128.0
 margin_right = 512.0
 margin_bottom = 512.0
